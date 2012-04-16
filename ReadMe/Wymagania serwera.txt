@@ -1,0 +1,26 @@
+1.Zainstalowany:
+Python 2.7
+Mysql
+
+2.Zainstalowane biblioteki do Pythona:
+MySQLdb
+lepl
+
+3.Skonfigurowany plik config.cfg serwera:
+
+[server]
+#port na którym dzia³a serwer
+port=5040
+#ip serwera
+ip=127.0.0.1
+[mysql]
+#host bazy mysql
+host=localhost
+#u¿ytkownik bazy danych
+user=root
+#has³o do bazy danych
+password=
+#nazwa bazy danych
+db=test
+
+4.Dostêp do Internetu b¹dŸ do sieci lokalnej

@@ -1,0 +1,9 @@
+1.Skonfigurowany plik config.cfg klienta
+
+[server]
+#adres serwera
+address=127.0.0.1
+#port na którym serwer nas³uchuje
+port=5040
+
+2.Dostêp do Internetu b¹dŸ do sieci lokalnej
