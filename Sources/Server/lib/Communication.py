@@ -8,7 +8,7 @@ def przetworz(dane,db,sock,klienci):
         if x.socket==sock:
             klient=x
     if klient.id==-1:
-        if podzielone[0]=='Reg':
+        if podzielone[0]=="Reg":
             if(podzielone[1].find(" ")!=-1):
                 try:
                     sock.send("Błąd\1Login nie może zawierać spacji\2")
@@ -30,7 +30,7 @@ def przetworz(dane,db,sock,klienci):
                     else:
                         if (len(podzielone[2])<6) & (len(podzielone[2])>50):
                             try:
-                                sock.send("Błąd\2Hasło musi mieć minimum 6 znaków maksymalnie 50 znakow\2")
+                                sock.send("Błąd\1Hasło musi mieć minimum 6 znaków maksymalnie 50 znakow\2")
                             except:
                                 pass
                         else:
@@ -47,14 +47,14 @@ def przetworz(dane,db,sock,klienci):
                                         sock.send("Błąd\1Ktoś inny używa tego emaila\2")
                                     except:
                                         pass
-                                else:
+                                else: 
                                     c.execute("""INSERT INTO users (login,password,email) VALUES (%s, %s, %s)""",(podzielone[1],podzielone[2],podzielone[3],))
                                     db.commit()
                                     try:
                                         sock.send("Sukcess\1Zarejstrowano pomyślnie\2")
                                     except:
                                         pass
-        if podzielone[0]=='Log':
+        if podzielone[0]=="Log":
             c.execute("""SELECT id,login,password FROM users WHERE (login=%s) AND (password=%s)""",(podzielone[1],podzielone[2]))
             if c.rowcount==0:
                 try:
@@ -68,12 +68,12 @@ def przetworz(dane,db,sock,klienci):
                 
                 for x in klienci:
                     try:
-                        sock.send("NowyUser\1"+x.login+"\2")
+                        sock.send(("NowyUser\1"+x.login+"\2").encode('utf-8'))
                     except:
                         pass
                     if x.id!=id:
                         try:
-                           x.socket.send("NowyUser\1"+login+"\2")
+                           x.socket.send(("NowyUser\1"+login+"\2").encode('utf-8'))
                         except:
                             pass
                 try:        
@@ -84,17 +84,17 @@ def przetworz(dane,db,sock,klienci):
         if podzielone[0]=="/all":
             for x in klienci:
                 try:
-                    x.socket.send(podzielone[0]+"\1"+klient.login+"\1"+podzielone[1]+"\2")
+                    x.socket.send((podzielone[0]+"\1"+klient.login+"\1"+podzielone[1]+"\2").encode('utf-8'))
                 except:
                     pass
         if podzielone[0]=="/pm":
-            znal=False;
+            znal=False
             for x in klienci:
                 if x.login==podzielone[1]:
                     znal=True
                     try:
-                        x.socket.send(podzielone[0]+"\1"+klient.login+"\1"+podzielone[2]+"\2")
-                        klient.socket.send(podzielone[0]+"\1"+klient.login+"\1"+podzielone[2]+"\2")
+                        x.socket.send((podzielone[0]+"\1"+klient.login+"\1"+podzielone[2]+"\2").encode('utf-8'))
+                        klient.socket.send((podzielone[0]+"\1"+klient.login+"\1"+podzielone[2]+"\2").encode('utf-8'))
                     except:
                         pass
             if znal==False:

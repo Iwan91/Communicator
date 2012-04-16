@@ -241,7 +241,13 @@ Edit4->Text="/pm "+ListBox1->Items->Strings[wybrany]+" ";
 
 void __fastcall TForm1::Edit4KeyPress(TObject *Sender, char &Key)
 {
-if(Key==VK_ENTER) BitBtn4->Click();        
+if(Key==VK_RETURN) BitBtn4->Click();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::MaskEdit1KeyPress(TObject *Sender, char &Key)
+{
+if(Key==VK_RETURN) BitBtn1->Click();  
 }
 //---------------------------------------------------------------------------
 

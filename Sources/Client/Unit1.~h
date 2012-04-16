@@ -62,6 +62,7 @@ __published:	// IDE-managed Components
           TPoint &MousePos, bool &Handled);
         void __fastcall Szept1Click(TObject *Sender);
         void __fastcall Edit4KeyPress(TObject *Sender, char &Key);
+        void __fastcall MaskEdit1KeyPress(TObject *Sender, char &Key);
 
 private:	// User declarations
 public:		// User declarations

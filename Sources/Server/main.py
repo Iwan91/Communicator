@@ -38,7 +38,11 @@ while True:
                 try:
                     dane = sock.recv(1024)  # jesli gniazdo jest czytalne(w mysl select) to recv() na pewno COS zwroci...
                     dane=dane.decode('utf-8')
-                    przetworz(dane,db,sock,klienci)
+                    try:
+                        przetworz(dane,db,sock,klienci)
+                    except Exception as e:
+                        print repr(e)
+                        
                 except:     # ten wyjatek bedzie rzucany ekstremalnie rzadko, ale piszemy kuloodpornie
                     dane = ''       # zasymulujmy ze koniec polaczenia
                

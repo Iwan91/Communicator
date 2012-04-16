@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 403
   Top = 259
-  Width = 496
+  Width = 716
   Height = 310
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -28,7 +28,6 @@ object Form1: TForm1
     ReadOnly = True
     ScrollBars = ssBoth
     TabOrder = 0
-    Visible = False
   end
   object GroupBox1: TGroupBox
     Left = 87
@@ -72,6 +71,7 @@ object Form1: TForm1
       Height = 21
       PasswordChar = '*'
       TabOrder = 1
+      OnKeyPress = MaskEdit1KeyPress
     end
     object BitBtn1: TBitBtn
       Left = 64
@@ -214,6 +214,7 @@ object Form1: TForm1
       Width = 233
       Height = 153
       ReadOnly = True
+      ScrollBars = ssVertical
       TabOrder = 2
     end
     object ListBox1: TListBox
