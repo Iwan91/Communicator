@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 403
-  Top = 259
-  Width = 497
+  Left = 404
+  Top = 260
+  Width = 500
   Height = 317
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -19,7 +19,7 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Debug: TMemo
-    Left = 480
+    Left = 496
     Top = 16
     Width = 201
     Height = 113

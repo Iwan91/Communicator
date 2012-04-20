@@ -1,9 +1,9 @@
 ﻿# coding=UTF-8
 import MySQLdb
+from lib.Classes import DB
 from lepl.apps.rfc3696 import Email
 def przetworz(dane,db,sock,klienci):
     podzielone=dane.split('\1')
-    c=db.cursor()
     for x in klienci:
         if x.socket==sock:
             klient=x
@@ -21,7 +21,7 @@ def przetworz(dane,db,sock,klienci):
                     except:
                         pass
                 else:
-                    c.execute("""SELECT login FROM users WHERE login=%s""",(podzielone[1],))
+                    c=db.query("""SELECT login FROM users WHERE login=%s""",(podzielone[1],))
                     if c.rowcount>0:
                         try:
                             sock.send("Błąd\1Podany login jest zajęty\2")
@@ -41,21 +41,20 @@ def przetworz(dane,db,sock,klienci):
                                 except:
                                     pass
                             else:
-                                c.execute("""SELECT email FROM users WHERE email=%s""",(podzielone[3],))
+                                c=db.query("""SELECT email FROM users WHERE email=%s""",(podzielone[3],))
                                 if c.rowcount>0:
                                     try:
                                         sock.send("Błąd\1Ktoś inny używa tego emaila\2")
                                     except:
                                         pass
                                 else: 
-                                    c.execute("""INSERT INTO users (login,password,email) VALUES (%s, %s, %s)""",(podzielone[1],podzielone[2],podzielone[3],))
-                                    db.commit()
+                                    c=db.query("""INSERT INTO users (login,password,email) VALUES (%s, %s, %s)""",(podzielone[1],podzielone[2],podzielone[3],))
                                     try:
                                         sock.send("Sukcess\1Zarejstrowano pomyślnie\2")
                                     except:
                                         pass
         if podzielone[0]=="Log":
-            c.execute("""SELECT id,login,password FROM users WHERE (login=%s) AND (password=%s)""",(podzielone[1],podzielone[2]))
+            c=db.query("""SELECT id,login,password FROM users WHERE (login=%s) AND (password=%s)""",(podzielone[1],podzielone[2]))
             if c.rowcount==0:
                 try:
                     sock.send("Błąd\1Hasło nie zgadza się z loginem\nlub login nie istnieje\2")

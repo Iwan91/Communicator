@@ -4,9 +4,10 @@ from select import select
 from lib.Initialization import start
 from lib.Communication import przetworz
 from lib.Classes import rekord
+import datetime
+import sys
 
 serv,klienci,db=start()
-
 while True:
     try:
         inputready,outputready,exceptready = select([serv] + [x.socket for x in klienci], (), (), 4)
@@ -38,7 +39,21 @@ while True:
                 try:
                     dane = sock.recv(1024)  # jesli gniazdo jest czytalne(w mysl select) to recv() na pewno COS zwroci...
                     dane=dane.decode('utf-8')
-                    przetworz(dane,db,sock,klienci)
+                    
+                    file= open("log.txt","a")
+                    now = datetime.datetime.now()
+                    file.write(now.strftime("%d-%m-%Y %T")+" "+dane+"\n")
+                    file.close()
+                    
+                    try:
+                        przetworz(dane,db,sock,klienci)
+                    except Exception as e:
+                        file= open("log.txt","a")
+                        now = datetime.datetime.now()
+                        file.write(now.strftime("%d-%m-%Y %T")+" "+repr(e)+"\n")
+                        file.close()
+                        #print repr(e)
+                        
                 except:     # ten wyjatek bedzie rzucany ekstremalnie rzadko, ale piszemy kuloodpornie
                     dane = ''       # zasymulujmy ze koniec polaczenia
                
