@@ -50,7 +50,7 @@ def przetworz(dane,db,sock,klienci):
                                 else: 
                                     c=db.query("""INSERT INTO users (login,password,email) VALUES (%s, %s, %s)""",(podzielone[1],podzielone[2],podzielone[3],))
                                     try:
-                                        sock.send("Sukcess\1Zarejstrowano pomyślnie\2")
+                                        sock.send("Sukcess\1Konto zostało założone\2")
                                     except:
                                         pass
         if podzielone[0]=="Log":

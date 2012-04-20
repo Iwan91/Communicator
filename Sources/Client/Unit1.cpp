@@ -192,8 +192,9 @@ void __fastcall TForm1::BitBtn1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BitBtn4Click(TObject *Sender)
 {
+        if(Edit4->Text!="")
+        {
         std::vector <String> pociete=podziel(Edit4->Text,' ');
-
         if(pociete[0]=="/all") wyslij("/all\1"+Edit4->Text.SubString(6,Edit4->Text.Length()));
         else
         {
@@ -208,7 +209,7 @@ void __fastcall TForm1::BitBtn4Click(TObject *Sender)
         else wyslij("/all\1"+Edit4->Text);
         }
         Edit4->Text="";
-        
+        }
 
 }
 //---------------------------------------------------------------------------
@@ -241,13 +242,29 @@ Edit4->Text="/pm "+ListBox1->Items->Strings[wybrany]+" ";
 
 void __fastcall TForm1::Edit4KeyPress(TObject *Sender, char &Key)
 {
-if(Key==VK_RETURN) BitBtn4->Click();
+if(Key==VK_RETURN)
+{
+Key = 0;
+BitBtn4->Click();
+}
+
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::MaskEdit1KeyPress(TObject *Sender, char &Key)
 {
-if(Key==VK_RETURN) BitBtn1->Click();  
+if(Key==VK_RETURN)
+{
+Key = 0;
+BitBtn1->Click();
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::BitBtn5Click(TObject *Sender)
+{
+GroupBox2->Visible=false;
+GroupBox1->Visible=true;
 }
 //---------------------------------------------------------------------------
 

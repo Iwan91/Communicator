@@ -47,6 +47,7 @@ __published:	// IDE-managed Components
         TLabel *Label9;
         TPopupMenu *PopupMenu1;
         TMenuItem *Szept1;
+        TBitBtn *BitBtn5;
         void __fastcall ClientSocket1Read(TObject *Sender,
           TCustomWinSocket *Socket);
         void __fastcall FormCreate(TObject *Sender);
@@ -63,6 +64,7 @@ __published:	// IDE-managed Components
         void __fastcall Szept1Click(TObject *Sender);
         void __fastcall Edit4KeyPress(TObject *Sender, char &Key);
         void __fastcall MaskEdit1KeyPress(TObject *Sender, char &Key);
+        void __fastcall BitBtn5Click(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations
