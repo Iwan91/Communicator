@@ -179,7 +179,6 @@ object Form1: TForm1
     ReadOnly = True
     ScrollBars = ssBoth
     TabOrder = 0
-    Visible = False
   end
   object GroupBox3: TGroupBox
     Left = 12

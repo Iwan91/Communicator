@@ -81,7 +81,7 @@ if(pociete[0]=="Sukcess")
           GroupBox3->Visible=true;
           Memo1->Lines->Add("*** Zalogowano jako: "+Edit1->Text+" ***");
         }
-        if(pociete[1]=="Zarejstrowano pomyœlnie")
+        if(pociete[1]=="Konto zosta³o za³o¿one")
         {
          ShowMessage(pociete[1]);
          GroupBox2->Visible=false;
@@ -135,7 +135,7 @@ GroupBox2->Visible=true;
 
 void __fastcall TForm1::BitBtn3Click(TObject *Sender)
 {
-        if( Edit2->Text=="" && Edit3->Text=="" && MaskEdit2->Text=="" && MaskEdit3->Text=="")
+        if( Edit2->Text=="" || Edit3->Text=="" || MaskEdit2->Text=="" || MaskEdit3->Text=="")
         {
                 ShowMessage("Wype³nij wszystkie pola");
         }
