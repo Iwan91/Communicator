@@ -1,19 +1,20 @@
 object Form1: TForm1
-  Left = 405
-  Top = 261
+  Left = 305
+  Top = 285
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Czat'
-  ClientHeight = 279
-  ClientWidth = 484
+  ClientHeight = 274
+  ClientWidth = 489
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poScreenCenter
   Visible = True
@@ -181,7 +182,7 @@ object Form1: TForm1
     TabOrder = 0
   end
   object GroupBox3: TGroupBox
-    Left = 12
+    Left = 20
     Top = 8
     Width = 457
     Height = 257
@@ -258,6 +259,17 @@ object Form1: TForm1
     object Szept1: TMenuItem
       Caption = 'Szept'
       OnClick = Szept1Click
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 128
+    Top = 16
+    object P1: TMenuItem
+      Caption = '&Pomoc'
+      object Oautorze1: TMenuItem
+        Caption = 'O &autorze'
+        OnClick = Oautorze1Click
+      end
     end
   end
 end

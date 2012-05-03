@@ -48,6 +48,9 @@ __published:	// IDE-managed Components
         TPopupMenu *PopupMenu1;
         TMenuItem *Szept1;
         TBitBtn *BitBtn5;
+        TMainMenu *MainMenu1;
+        TMenuItem *P1;
+        TMenuItem *Oautorze1;
         void __fastcall ClientSocket1Read(TObject *Sender,
           TCustomWinSocket *Socket);
         void __fastcall FormCreate(TObject *Sender);
@@ -65,6 +68,7 @@ __published:	// IDE-managed Components
         void __fastcall Edit4KeyPress(TObject *Sender, char &Key);
         void __fastcall MaskEdit1KeyPress(TObject *Sender, char &Key);
         void __fastcall BitBtn5Click(TObject *Sender);
+        void __fastcall Oautorze1Click(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations
