@@ -7,7 +7,7 @@ from lib.Classes import rekord
 import datetime
 import sys
 
-serv,klienci,db=start()
+serv, klienci, db = start()
 while True:
     try:
         inputready,outputready,exceptready = select([serv] + [x.socket for x in klienci], (), (), 4)
