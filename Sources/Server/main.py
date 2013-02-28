@@ -30,9 +30,9 @@ while True:
         for sock in inputready:
             if sock == serv:        # jesli mozemy czytac gniazdo serwera to znaczy ze jest nowe polaczenie
                 nowysock, adres = serv.accept()
-                rekordklient=rekord()
-                rekordklient.socket=nowysock
-                rekordklient.id=-1;
+                rekordklient = rekord()
+                rekordklient.socket = nowysock
+                rekordklient.id = -1
                 klienci.append(rekordklient)
                 #nowysock.send('Ohayo!\n')
             else:                   # to zwykly klient. Odbierzmy dane i wyslijmy je innym
